@@ -31,3 +31,9 @@ In this project you can do the simple CRED with Django.
 ### To run tests just type in command
 
 `python manage.py test`
+
+# Seed database:
+
+### To seed the database with dummy data just run:
+
+`python manage.py seed_db`
