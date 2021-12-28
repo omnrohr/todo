@@ -1,8 +1,5 @@
 import time
-from django.contrib.auth import get_user_model
-from django.forms.forms import DeclarativeFieldsMetaclass
-from django.http import response
-from django.test import TestCase, SimpleTestCase, Client, client
+from django.test import TestCase, SimpleTestCase, Client
 from django.urls import reverse
 from django.urls.base import resolve
 from .views import hello, updatetask, deletetask

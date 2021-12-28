@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
+from django.shortcuts import redirect, render
 from .models import Task
 from .forms import TaskForm
 
