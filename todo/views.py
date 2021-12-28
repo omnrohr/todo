@@ -12,8 +12,6 @@ def hello(request):
             form.save()
             return redirect('/')
     tasks = {'tasks': tasks_list, 'form': form}
-    print(tasks['tasks'])
-    print([task for task in tasks['tasks']])
     return render(request, 'tasks.html', context=tasks)
 
 
@@ -27,3 +25,12 @@ def updatetask(request, pk):
             return redirect('/')
     context = {'form': form}
     return render(request,'update_task.html', context)
+
+def deletetask(request, pk):
+    obj = Task.objects.get(id=pk)
+    if request.method=='POST':
+        obj.delete()
+        return redirect('tasks')
+    context = {'task': obj}
+    return render(request, 'delete.html', context)
+    

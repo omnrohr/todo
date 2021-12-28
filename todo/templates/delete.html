@@ -4,7 +4,6 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
 />
-
 <style>
   body {
     background-color: #638cb8;
@@ -21,14 +20,20 @@
     color: #d3d3d3;
   }
 
+  label {
+    font-size: 1.5rem;
+  }
+
+  #id_Completed {
+    width: auto;
+  }
   .submit {
     background-color: #6ba3e8;
   }
-
   .center-column {
     width: 600px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 70px auto;
+    padding: 50px 20px 20px;
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
@@ -47,50 +52,22 @@
   .btn-danger {
     background-color: #ffae19;
     border-color: #e59400;
-  }
-  .tasks-header {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin: auto;
-    padding: 0;
-  }
-  #add-task {
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.4rem;
   }
 </style>
 
 <div class="center-column">
-  <h2>All Tasks</h2>
-  <hr />
-  <label class="tasks-header">Add new task</label>
-  <form method="POST" action="/">
-    {% csrf_token %} {{form.title}}
+  <h3>Are you sure you want to delete "{{task}}"?</h3>
+
+  <a class="btn btn-info" href="{% url 'tasks' %}">Cancel</a>
+
+  <form method="POST" action="">
+    {% csrf_token %}
     <input
-      class="btn btn-info"
+      class="btn btn-danger"
       type="submit"
-      name="Create Task"
-      value="Add"
-      id="add-task"
+      name="Confirm"
+      value="Yes Delete"
     />
   </form>
-  <hr />
-  <div class="todo-list">
-    {% for task in tasks %}
-    <div class="item-row">
-      <a class="btn btn-sm btn-info" href="{% url 'update' task.id %}"
-        >Update</a
-      >
-      <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"
-        >Delete</a
-      >
-
-      {% if task.Completed == True %}
-      <s>{{task}}</s>
-      {% else %}
-      <span>{{task}}</span>
-      {% endif %}
-    </div>
-    {% endfor %}
-  </div>
 </div>
